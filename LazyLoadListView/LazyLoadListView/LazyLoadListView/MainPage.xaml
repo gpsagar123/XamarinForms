@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LazyLoadListView.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+
+        <Label Text="List Data" HorizontalOptions="Start" FontSize="Large" 
+               VerticalOptions="Start"></Label>
+        
+        <ListView x:Name="sample_LV" ItemsSource="{Binding ListData}" HasUnevenRows="True" ItemAppearing="sample_LV_ItemAppearing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell  Text="{Binding Title}" Detail="{Binding Description}" 
+                              DetailColor="Tomato"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+
+</ContentPage>
