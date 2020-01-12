@@ -4,40 +4,68 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:vm="clr-namespace:CollectionViewForms.ViewModel"
              x:Class="CollectionViewForms.View.ProductsPage"
-             Title="Demo On Collection View for Xamarin Forms"
+             Title="Demo On Collection View for Xamarin"
              >
 
-    <ContentPage.Resources>
-        <vm:ProductViewModel ></vm:ProductViewModel>
-    </ContentPage.Resources>
+   
     
     <ContentPage.Content>
-        <Grid>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <CollectionView ItemsSource="{Binding Products}">
+            <CollectionView x:Name="productsCV"    Grid.Row="0" SelectionMode="Multiple">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="6">
+                        
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <Label Text="Products List" FontSize="Large" HorizontalOptions="Center"></Label>
+                </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid  >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding ImageUrl}" MinimumHeightRequest="90" 
-                                   MinimumWidthRequest="90" Grid.Column="0"></Image>
+                            <Image Source="{Binding ImageUrl}" HeightRequest="90" 
+                                   WidthRequest="90" Grid.Column="0"></Image>
                             <StackLayout Orientation="Vertical" Grid.Column="1">
-                                <Label Text="{Binding Name}" FontSize="Title"></Label>
-                                <Label Text="{Binding Price, StringFormat='Price Starts from {0}'}" 
-                                       FontSize="Subtitle" />
+                                <Label Text="{Binding Name}" FontSize="Subtitle"></Label>
+                                <Label Text="{Binding Price}" 
+                                       FontSize="Medium" />
                             </StackLayout>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <!--<ListView ItemsSource="{Binding Products}" Grid.Row="0" BackgroundColor="BlanchedAlmond">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Aqua">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ImageUrl}" MinimumHeightRequest="90" 
+                                   MinimumWidthRequest="90" Grid.Column="0"></Image>
+                                <StackLayout Orientation="Vertical" Grid.Column="1">
+                                    <Label Text="Name" FontSize="Title"></Label>
+                                    <Label Text="10000" 
+                                       FontSize="Subtitle" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>-->
 
         </Grid>
     </ContentPage.Content>

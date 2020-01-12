@@ -8,11 +8,13 @@ namespace CollectionViewForms.ViewModel
 {
     public class ProductViewModel
     {
-        List<Product> Products;
+        public List<Product> Products { get; set; }
 
         public ProductViewModel()
         {
             Products = new ProductService().GetProductList();
+            //Products.AddRange(Products);
+            //Products.AddRange(Products);
         }
     }
 }
