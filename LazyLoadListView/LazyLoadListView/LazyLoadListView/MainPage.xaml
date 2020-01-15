@@ -3,24 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:LazyLoadListView"
              mc:Ignorable="d"
              x:Class="LazyLoadListView.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="FromTemplate">
+                <TextCell  Text="{Binding Title}" Detail="{Binding Description}" 
+                              DetailColor="Tomato"></TextCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ToTemplate" >
+                <TextCell TextColor="Blue"  Text="{Binding Title}" Detail="{Binding Description}" 
+                              DetailColor="Blue"></TextCell>
+            </DataTemplate>
+
+            <local:ItemIDDataTemplateSelector x:Key="MyCustomTemplateSelector"
+                FromTemplate="{StaticResource FromTemplate}" 
+                ToTemplate="{StaticResource ToTemplate}"></local:ItemIDDataTemplateSelector>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <StackLayout>
         <!-- Place new controls here -->
 
         <Label Text="List Data" HorizontalOptions="Start" FontSize="Large" 
                VerticalOptions="Start"></Label>
-        
-        <ListView x:Name="sample_LV" ItemsSource="{Binding ListData}" HasUnevenRows="True" ItemAppearing="sample_LV_ItemAppearing">
-            <ListView.ItemTemplate>
+
+        <ListView x:Name="sample_LV"
+                  ItemsSource="{Binding ListData}" 
+                  ItemTemplate="{StaticResource MyCustomTemplateSelector}"
+                  HasUnevenRows="True"
+                  ItemAppearing="sample_LV_ItemAppearing">
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell  Text="{Binding Title}" Detail="{Binding Description}" 
                               DetailColor="Tomato"></TextCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
-        
+
     </StackLayout>
 
 </ContentPage>

@@ -37,7 +37,7 @@ namespace LazyLoadListView
 
             conn = DependencyService.Get<ISQLite>().GetConnection();
             ListData = new ObservableCollection<MyData>();
-
+            
             InsertSampleData();
             PopulateListData();
         }
@@ -63,6 +63,7 @@ namespace LazyLoadListView
             string sql = $"SELECT * FROM MyData LIMIT 20 OFFSET {_offset}";
 
             List<MyData> data = conn.Query<MyData>(sql);
+            
 
             ListData = new ObservableCollection<MyData>(data as List<MyData>);
 

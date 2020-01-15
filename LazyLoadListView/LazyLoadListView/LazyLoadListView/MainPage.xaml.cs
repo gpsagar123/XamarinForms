@@ -17,6 +17,8 @@ namespace LazyLoadListView
         {
             InitializeComponent();
             BindingContext = new MainPageViewModel();
+
+            
         }
 
         private void sample_LV_ItemAppearing(object sender, ItemVisibilityEventArgs e)
