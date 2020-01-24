@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:local="clr-namespace:ShellDemo.Views"
+       Title="ShellDemo"
+       x:Class="ShellDemo.AppShell">
+
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="80" BackgroundColor="BlueViolet">
+            <Label Text="Nav Demo" TextColor="White" FontSize="48" HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- Your Pages -->
+    <FlyoutItem Title="Single Page" FlyoutIcon="page_one">
+        <ShellContent ContentTemplate="{DataTemplate local:PageOne}"></ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Second Page" FlyoutIcon="page_two">
+        <ShellContent ContentTemplate="{DataTemplate local:PageTwo}"></ShellContent>
+    </FlyoutItem>
+
+    <!--As Multiple Items-->
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Icon="page_one" Title="first page" ContentTemplate="{DataTemplate local:PageOne}"></ShellContent>
+        <ShellContent Icon="page_two" Title="second page" ContentTemplate="{DataTemplate local:PageTwo}"></ShellContent>
+    </FlyoutItem>
+
+    <!--For Bottom Tabs-->
+    <FlyoutItem Title="Bottom Tabs" FlyoutIcon="bottom_tab">
+        <Tab Title="Browse" Icon="bottom_tab">
+            <ShellContent Title="Items" ContentTemplate="{DataTemplate local:ItemsPage}"></ShellContent>
+            
+
+        </Tab>
+        <Tab Title="About" Icon="tab_about">
+            <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}"></ShellContent>
+           
+        </Tab>
+    </FlyoutItem>
+
+    <!--For Top Tabs-->
+    <FlyoutItem Title="Top Tabs" FlyoutIcon="top_tab">
+        <Tab Title="Top Tabs">
+            <ShellContent Title="Items" ContentTemplate="{DataTemplate local:ItemsPage}"></ShellContent>
+            <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}"></ShellContent>
+
+            <ShellContent Title="One" ContentTemplate="{DataTemplate local:PageOne}"></ShellContent>
+            <ShellContent Title="Two" ContentTemplate="{DataTemplate local:PageTwo}"></ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <!--For Top and Bottom Tabs-->
+    <FlyoutItem Title="Top and Bottom" Icon="both_tab">
+        <Tab Title="Activity" Icon="tab_feed">
+            <ShellContent Title="Items" ContentTemplate="{DataTemplate local:ItemsPage}"></ShellContent>
+            <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}"></ShellContent>
+        </Tab>
+        <Tab Title="Pages" Icon="page">
+            <ShellContent Title="One" ContentTemplate="{DataTemplate local:PageOne}"></ShellContent>
+            <ShellContent Title="Two" ContentTemplate="{DataTemplate local:PageTwo}"></ShellContent>
+        </Tab>
+    </FlyoutItem>
+    
+    <!--MenuItems-->
+    <MenuItem Text="Rate this app" Clicked="MenuItem_Clicked" Icon="star"></MenuItem>
+    
+    <!--<TabBar>
+        <Tab Title="Browse" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </TabBar>-->
+
+
+    <!--<FlyoutItem Title="Browse" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </FlyoutItem>
+        <FlyoutItem Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </FlyoutItem>-->
+
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+</Shell>
